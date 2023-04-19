@@ -5,6 +5,7 @@ import neat
 import matplotlib
 # matplotlib.use('QtAgg')
 import matplotlib.pyplot as plt
+import copy
 
 GEN = 0
 
@@ -122,7 +123,7 @@ def runWinner(best_genome, config):
     neuralNetwork = neat.nn.FeedForwardNetwork.create(best_genome, config)
 
     for i in range(100):
-        biome.addOccupier(Biome.Organism.Organism(None, best_genome, neuralNetwork))
+        biome.addOccupier(Biome.Organism.Organism(None, copy.deepcopy(best_genome), neuralNetwork))
     
     dispaly = Display.Display(biome.getBiomeWidth(), biome.getBiomeHight(), 10)
 
